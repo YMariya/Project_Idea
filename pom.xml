@@ -16,7 +16,7 @@
         <selenium.version>3.7.0</selenium.version>
     </properties>
 
-    <dependencies>
+       <dependencies>
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-cucumber-jvm-adaptor</artifactId>
@@ -48,8 +48,6 @@
             <version>1.4.23</version>
         </dependency>
     </dependencies>
-
-
     <build>
         <plugins>
             <plugin>
@@ -76,6 +74,22 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.12.v20180830</version>
+                <configuration>
+                    <webAppSourceDirectory> $ {project.build.directory}/site/allure-maven-plugin  </webAppSourceDirectory>
+                <stopKey>stop</stopKey>
+                    <stopPort>1234</stopPort>
+                    <httpConnector>
+                    <port>9999</port>
+                </httpConnector>
+                </configuration>
+            </plugin>
+
+
+
             <plugin>
                 <groupId>ru.yandex.qatools.allure</groupId>
                 <artifactId>allure-maven-plugin</artifactId>
